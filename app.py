@@ -68,7 +68,7 @@ def predict_image(img):
     return "\n".join(results), patch_viz
 
 
-# Create a simple Gradio interface
+
 with gr.Blocks() as demo:
     gr.Markdown("# Vision Transformer (ViT) Demo")
     gr.Markdown(
@@ -83,14 +83,13 @@ with gr.Blocks() as demo:
             patch_viz = gr.Image(type="pil", label="Image with Patches")
             prediction = gr.Textbox(label="Top 5 Predictions")
 
-    # Set up the button click
+
     classify_btn.click(
         fn=predict_image,
         inputs=input_image,
         outputs=[prediction, patch_viz]
     )
 
-    # Add demo explanation
     with gr.Accordion("How Vision Transformer Works", open=False):
         gr.Markdown("""
         ## How Vision Transformer Works
@@ -104,6 +103,6 @@ with gr.Blocks() as demo:
         This demo uses `vit_b_16`, a standard Vision Transformer pre-trained on ImageNet, capable of recognizing 1,000 different object classes.
         """)
 
-# Run the app
+
 if __name__ == "__main__":
     demo.launch()
